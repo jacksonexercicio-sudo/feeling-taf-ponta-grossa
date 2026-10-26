@@ -40,7 +40,7 @@ const form = document.getElementById("leadForm"), btn = document.getElementById(
 const params = new URLSearchParams(location.search);
 ["utm_source","utm_medium","utm_campaign"].forEach(k=>{form.elements[k].value=(params.get(k)||"").slice(0,100)});
 form.elements.pagina_origem.value=location.href.slice(0,500);
-const lookup={pcpr:"Polícia Civil do Paraná",esa:"ESA",epcar:"EPCAR",afa:"AFA",efomm:"EFOMM",pg:"Agente de Trânsito — Ponta Grossa",ee ar:"EEAR",eear:"EEAR",espcex:"EsPCEx",pmpr:"Polícia Militar do Paraná"};
+const lookup={pcpr:"Polícia Civil do Paraná",esa:"ESA",epcar:"EPCAR",afa:"AFA",efomm:"EFOMM",pg:"Agente de Trânsito — Ponta Grossa",eear:"EEAR",espcex:"EsPCEx",pmpr:"Polícia Militar do Paraná"};
 const camp=(params.get("concurso")||"").toLowerCase();if(lookup[camp])document.getElementById("concurso").value=lookup[camp];
 const msg="Estamos finalizando a integração segura de envio do e-book. O formulário será ativado após o teste de gravação no Google Sheets e de entrega do e-mail.";
 if(scriptUrl==="__APPS_SCRIPT_URL__"){btn.disabled=true;status.textContent=msg;status.classList.add("show");}
