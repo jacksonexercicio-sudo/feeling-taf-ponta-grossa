@@ -20,8 +20,8 @@ function doPost(e) {
  const p=e&&e.parameter?e.parameter:{};
  if(p.website) return respond_('Recebemos sua solicitação.',true);
  const nome=clean_(p.nome,90), email=clean_(p.email,120).toLowerCase(), telefone=clean_(p.whatsapp,30).replace(/\D/g,''),
- cidade=clean_(p.cidade,100), concurso=clean_(p.concurso,100), etapa=clean_(p.etapa,100), modalidade=clean_(p.modalidade,40);
- if(nome.length<3||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||!/^[1-9][0-9]{9,10}$/.test(telefone)||!cidade||!concurso||!etapa||!modalidade || p.ciencia_privacidade!=='SIM' || !['candidato_maior','responsavel'].includes(p.representacao)){
+ cidade='', concurso=clean_(p.concurso,100), etapa='', modalidade='';
+ if(nome.length<3||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||!/^[1-9][0-9]{9,10}$/.test(telefone)||!concurso || p.ciencia_privacidade!=='SIM'){
   return respond_('Confira os dados obrigatórios e confirme a ciência da política de privacidade.',false);
  }
  const optin=p.consentimento_comercial==='SIM'?'SIM':'NÃO';
