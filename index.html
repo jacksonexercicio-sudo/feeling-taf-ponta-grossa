@@ -138,7 +138,7 @@ h1 em{color:#fff;text-decoration:underline;text-decoration-color:#4F39F6;text-de
 <footer class="footer"><div class="wrap"><div><img class="footer-logo" src="taf/assets/logo-tafexato-escuro.svg" alt="TAFEXATO — logotipo para fundo escuro" width="205" height="43"><br><small>Preparação individualizada para TAF • Atendimento on-line</small></div><small><a href="taf/privacidade.html">Política de Privacidade</a> · Material independente, sem vínculo com bancas ou instituições.</small></div></footer>
 <script>
 (() => {
-const scriptUrl = "__APPS_SCRIPT_URL__"; // URL real será preenchida apenas após implantação do Google Apps Script
+const scriptUrl = "https://script.google.com/macros/s/AKfycbzgyqVKAMKFqA2kePKvd1Ab8fYxE43dLKavvfqww7ilV2cYwTwi22s6XhXNI6p5g7PA1g/exec";
 const form = document.getElementById("leadForm"), btn = document.getElementById("submitBtn"), status = document.getElementById("formStatus");
 const params = new URLSearchParams(location.search);
 ["utm_source","utm_medium","utm_campaign"].forEach(k=>{form.elements[k].value=(params.get(k)||"").slice(0,100)});
