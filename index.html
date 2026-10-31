@@ -87,6 +87,34 @@ h1 em{color:#fff;text-decoration:underline;text-decoration-color:#4F39F6;text-de
 .footer small{color:#e2e8f0}
 .footer-logo{display:block;width:205px;height:auto;max-width:100%;object-fit:contain;object-position:left center}
 @media(max-width:600px){.brand{width:155px;height:52px}.top .btn{font-size:10px;padding:11px 9px;max-width:51%;white-space:normal}.footer-logo{width:195px}}
+
+/* TAFEXATO — seção comercial: índigo forte institucional e cartões responsivos. */
+.pricing-section{background:#fff}
+.pricing-section h2{max-width:900px}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-top:32px;align-items:stretch}
+.plan-card{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:24px 19px;background:#fff;border:1px solid #cbd5e1;border-radius:16px}
+.plan-card-trimestral{border:2px solid #4F39F6;background:#fff}
+.plan-main{min-width:0}
+.plan-type{margin:0 0 7px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:#4F39F6}
+.plan-card h3{font-size:24px;line-height:1.1;margin:0 0 9px;color:#020617}
+.plan-summary{font-size:13px;line-height:1.5;color:#334155;min-height:60px;margin:0 0 14px}
+.plan-old{font-size:13px;color:#475569;min-height:21px;margin:0 0 2px}
+.plan-old del{text-decoration-thickness:1.5px}
+.plan-old-empty{visibility:hidden}
+.plan-price{display:flex;align-items:baseline;gap:4px;margin:0;color:#4F39F6;font-variant-numeric:tabular-nums}
+.plan-currency{font-size:19px;font-weight:800}
+.plan-price strong{font-size:clamp(33px,3.2vw,47px);font-weight:800;line-height:1.12;letter-spacing:-.04em}
+.plan-per{font-size:15px;font-weight:700;color:#020617}
+.plan-term{font-size:12px;line-height:1.45;font-weight:700;color:#334155;min-height:34px;margin:6px 0 18px}
+.plan-benefits{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.plan-benefits li{position:relative;padding-left:21px;color:#1e293b;font-size:13px;line-height:1.5}
+.plan-benefits li:before{content:"✓";position:absolute;left:0;top:0;color:#4F39F6;font-weight:900}
+.plan-action{margin-top:auto}
+.plan-button{display:flex;width:100%;font-size:12px;min-height:50px;padding:12px 9px;line-height:1.35;white-space:normal;background:#4F39F6;color:#fff;border-radius:9px}
+.plan-payment{text-align:center;color:#334155;font-size:11px;line-height:1.45;min-height:32px;margin:11px 0 0}
+.pricing-disclaimer{font-size:12px;line-height:1.6;color:#475569;margin:21px 0 0;max-width:1040px}
+@media(max-width:1080px){.pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.plan-summary,.plan-term,.plan-payment{min-height:0}.plan-card{padding:25px}}
+@media(max-width:620px){.pricing-grid{grid-template-columns:1fr}.plan-card{padding:23px}.plan-price strong{font-size:45px}.plan-summary{min-height:0}.plan-card h3{font-size:24px}}
 </style></head><body>
 <a href="#cadastro" class="skip">Ir para o formulário</a>
 <header class="top"><div class="wrap"><a href="#" aria-label="Voltar ao início da landing page"><img class="brand" src="taf/assets/logo-tafexato-claro.svg" alt="TAFEXATO — logotipo para fundo claro" width="215" height="58"></a><a class="btn" href="#cadastro">QUERO MEU E-BOOK GRATUITO</a></div></header>
@@ -133,6 +161,100 @@ h1 em{color:#fff;text-decoration:underline;text-decoration-color:#4F39F6;text-de
 <div class="item"><strong>03 · Cada treino no dia programado</strong><span>Receba a sessão separadamente por WhatsApp ou e-mail, conforme sua preferência. Nenhum aplicativo necessário.</span></div>
 <div class="item"><strong>04 · Ajuste semanal com base nos seus resultados</strong><span>Informe o que realizou; a TAFEXATO analisa a semana anterior e envia feedback sobre a evolução e as prioridades da próxima.</span></div>
 </div></div></section>
+
+<section class="section pricing-section" id="planos" aria-labelledby="planos-titulo">
+  <div class="wrap">
+    <span class="overline">Escolha sua preparação</span>
+    <h2 id="planos-titulo">Planos e valores TAFEXATO</h2>
+    <p class="lede">Seu primeiro passo pode ser gratuito: receba o nosso e-book. Quando estiver pronto para começar, escolha a modalidade de preparação para o TAF que se encaixa no acompanhamento de que você precisa.</p>
+    <div class="pricing-grid">
+      <article class="plan-card">
+        <div class="plan-main">
+          <p class="plan-type">Plano avulso · 30 dias</p>
+          <h3>Planilha</h3>
+          <p class="plan-summary">Sua preparação organizada por 30 dias, sem acompanhamento.</p>
+          <p class="plan-old"><span>De</span> <del>R$ 79</del></p>
+          <p class="plan-price"><span class="plan-currency">R$</span> <strong>69</strong></p>
+          <p class="plan-term">Pagamento único · 30 dias</p>
+          <ul class="plan-benefits">
+            <li>Prescrição individualizada conforme as informações fornecidas e os testes do edital</li>
+            <li>Planilha de 30 dias com exercícios, intensidades e orientações</li>
+            <li>Entrega do material por WhatsApp ou e-mail</li>
+            <li>Sem acompanhamento, ajustes semanais ou suporte individualizado</li>
+          </ul>
+        </div>
+        <div class="plan-action">
+          <a class="btn plan-button" href="https://wa.me/5542999258032?text=Ol%C3%A1!%20Quero%20conhecer%20e%20contratar%20o%20plano%20Planilha%20da%20TAFEXATO%2C%20anunciado%20por%20R%24%2069%20por%2030%20dias.%20Poderia%20me%20orientar%20sobre%20o%20pagamento%20e%20o%20in%C3%ADcio%20dos%20treinos%3F" target="_blank" rel="noopener noreferrer" aria-label="Solicitar o plano Planilha por R$ 69 no WhatsApp">QUERO O PLANO PLANILHA</a>
+          <p class="plan-payment">Pix, débito ou crédito</p>
+        </div>
+      </article>
+
+      <article class="plan-card">
+        <div class="plan-main">
+          <p class="plan-type">Acompanhamento · mensal</p>
+          <h3>Individual</h3>
+          <p class="plan-summary">Treinos individualizados com acompanhamento profissional.</p>
+          <p class="plan-old"><span>De</span> <del>R$ 179</del></p>
+          <p class="plan-price"><span class="plan-currency">R$</span> <strong>149</strong><span class="plan-per">/mês</span></p>
+          <p class="plan-term">Plano mensal</p>
+          <ul class="plan-benefits">
+            <li>Análise do edital e diagnóstico individual</li>
+            <li>Prescrição específica para as provas do seu TAF</li>
+            <li>Cada treino enviado no dia programado, por WhatsApp ou e-mail</li>
+            <li>Acompanhamento e ajustes semanais com base nos resultados da semana anterior</li>
+          </ul>
+        </div>
+        <div class="plan-action">
+          <a class="btn plan-button" href="https://wa.me/5542999258032?text=Ol%C3%A1!%20Quero%20conhecer%20e%20contratar%20o%20plano%20Individual%20da%20TAFEXATO%2C%20anunciado%20por%20R%24%20149%20por%20m%C3%AAs.%20Poderia%20me%20orientar%20sobre%20o%20pagamento%20e%20o%20in%C3%ADcio%20dos%20treinos%3F" target="_blank" rel="noopener noreferrer" aria-label="Solicitar o plano Individual por R$ 149 mensais no WhatsApp">QUERO O PLANO INDIVIDUAL</a>
+          <p class="plan-payment">Pix, débito ou crédito</p>
+        </div>
+      </article>
+
+      <article class="plan-card">
+        <div class="plan-main">
+          <p class="plan-type">Acompanhamento ampliado · mensal</p>
+          <h3>Intensivo</h3>
+          <p class="plan-summary">Mais suporte técnico para sua preparação.</p>
+          <p class="plan-old plan-old-empty" aria-hidden="true">Sem desconto anunciado</p>
+          <p class="plan-price"><span class="plan-currency">R$</span> <strong>249</strong><span class="plan-per">/mês</span></p>
+          <p class="plan-term">Plano mensal</p>
+          <ul class="plan-benefits">
+            <li>Tudo o que está incluído no plano Individual</li>
+            <li>Uma reunião técnica mensal de até 20 minutos</li>
+            <li>Análise de até dois vídeos de execução por mês</li>
+            <li>Acompanhamento ampliado dos índices e prioridade no atendimento</li>
+          </ul>
+        </div>
+        <div class="plan-action">
+          <a class="btn plan-button" href="https://wa.me/5542999258032?text=Ol%C3%A1!%20Quero%20conhecer%20e%20contratar%20o%20plano%20Intensivo%20da%20TAFEXATO%2C%20anunciado%20por%20R%24%20249%20por%20m%C3%AAs.%20Poderia%20me%20orientar%20sobre%20o%20pagamento%20e%20o%20in%C3%ADcio%20dos%20treinos%3F" target="_blank" rel="noopener noreferrer" aria-label="Solicitar o plano Intensivo por R$ 249 mensais no WhatsApp">QUERO O PLANO INTENSIVO</a>
+          <p class="plan-payment">Pix, débito ou crédito</p>
+        </div>
+      </article>
+
+      <article class="plan-card plan-card-trimestral">
+        <div class="plan-main">
+          <p class="plan-type">Continuidade · 3 meses</p>
+          <h3>Trimestral</h3>
+          <p class="plan-summary">O acompanhamento Individual por três meses, com menor valor mensal.</p>
+          <p class="plan-old"><span>De</span> <del>R$ 149/mês</del></p>
+          <p class="plan-price"><span class="plan-currency">R$</span> <strong>129</strong><span class="plan-per">/mês</span></p>
+          <p class="plan-term">3 cobranças mensais de R$ 129 · total R$ 387</p>
+          <ul class="plan-benefits">
+            <li>Prescrição individualizada para o seu edital durante três meses</li>
+            <li>Treinos enviados no dia programado por WhatsApp ou e-mail</li>
+            <li>Acompanhamento profissional e ajustes semanais</li>
+            <li>Compromisso de três meses, com cobranças mensais recorrentes</li>
+          </ul>
+        </div>
+        <div class="plan-action">
+          <a class="btn plan-button" href="https://wa.me/5542999258032?text=Ol%C3%A1!%20Quero%20conhecer%20e%20contratar%20o%20plano%20Trimestral%20da%20TAFEXATO%2C%20anunciado%20por%203%20mensalidades%20recorrentes%20de%20R%24%20129%20(total%20R%24%20387).%20Poderia%20me%20orientar%20sobre%20o%20pagamento%20e%20o%20in%C3%ADcio%20dos%20treinos%3F" target="_blank" rel="noopener noreferrer" aria-label="Solicitar o plano Trimestral por três mensalidades recorrentes de R$ 129 no WhatsApp">QUERO O PLANO TRIMESTRAL</a>
+          <p class="plan-payment">Cartão de crédito recorrente ou Pix recorrente</p>
+        </div>
+      </article>
+    </div>
+    <p class="pricing-disclaimer">O e-book é gratuito e independente da contratação. Os botões dos planos iniciam uma conversa com nossa equipe pelo WhatsApp; não realizam pagamento nesta página. Os planos de acompanhamento são individualizados para o TAF e não garantem aprovação.</p>
+  </div>
+</section>
 <section class="section" id="como"><div class="wrap"><span class="overline">Do guia gratuito ao acompanhamento</span><h2>Comece pelo e-book. Evolua com método.</h2><div class="steps"><div class="step"><b>01</b><h3>Baixe o e-book gratuito</h3><p>Informe nome, contato e concurso para receber o material educativo sem obrigação de contratar.</p></div><div class="step"><b>02</b><h3>Conheça o diagnóstico</h3><p>Se autorizar mensagens comerciais, a TAFEXATO poderá apresentar a avaliação e a proposta individualizada.</p></div><div class="step"><b>03</b><h3>Treine sem complicação</h3><p>Após contratar o programa, receba cada treino por WhatsApp ou e-mail no dia certo; relate os resultados para orientar os ajustes da semana seguinte.</p></div></div></div></section>
 <section class="strip"><div class="wrap"><div><h2>Cada treino conta. Cada semana importa.</h2><p>Além do índice. Seu edital é específico. Seu treino também.</p></div><a class="btn" href="#cadastro">QUERO MEU E-BOOK GRATUITO →</a></div></section></main>
 <footer class="footer"><div class="wrap"><div><img class="footer-logo" src="taf/assets/logo-tafexato-escuro.svg" alt="TAFEXATO — logotipo para fundo escuro" width="205" height="43"><br><small>Preparação individualizada para TAF • Atendimento on-line</small></div><small><a href="taf/privacidade.html">Política de Privacidade</a> · Material independente, sem vínculo com bancas ou instituições.</small></div></footer>
