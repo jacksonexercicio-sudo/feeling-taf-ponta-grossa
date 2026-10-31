@@ -7,14 +7,16 @@
 const CONFIG = Object.freeze({
  SHEET_ID:'1Ug_7UtxbkNC40a8tXL_aZIrIuC-tS2ICRPHHXwmCjI8',
  LEADS_TAB:'Leads TAF',
- EBOOK_URL:'https://jacksonexercicio-sudo.github.io/feeling-taf-ponta-grossa/taf/guia.html',
- SUCCESS_URL:'https://jacksonexercicio-sudo.github.io/feeling-taf-ponta-grossa/taf/obrigado.html',
- POLICY_VERSION:'2026-10-26',
- ADMIN_EMAIL:'tafexato@gmail.com',
+ EBOOK_URL:'https://tafexato.com.br/taf/guia.html',
+ SUCCESS_URL:'https://tafexato.com.br/taf/obrigado.html',
+ POLICY_VERSION:'2026-10-30',
+ ADMIN_EMAIL:'jacksonexercicio@gmail.com',
+ REPLY_TO:'tafexato@gmail.com',
 });
 function clean_(v, n){return String(v===undefined?'':v).trim().slice(0,n||200);}
+function safeCell_(v){const s=String(v);return /^[=+\-@]/.test(s)?"'"+s:s;}
 function enc_(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function respond_(msg,ok){ const safe=enc_(msg);return HtmlService.createHtmlOutput('<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TAFEXATO</title><body style="font-family:Arial;padding:40px;max-width:680px;margin:auto"><h1>'+ (ok?'Inscrição recebida':'Não foi possível concluir')+'</h1><p>'+safe+'</p><a href="https://jacksonexercicio-sudo.github.io/feeling-taf-ponta-grossa/taf/">Voltar ao formulário</a></body></html>');}
+function respond_(msg,ok){ const safe=enc_(msg);return HtmlService.createHtmlOutput('<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TAFEXATO</title><body style="font-family:Arial;padding:40px;max-width:680px;margin:auto"><h1>'+ (ok?'Inscrição recebida':'Não foi possível concluir')+'</h1><p>'+safe+'</p><a href="https://tafexato.com.br/">Voltar ao formulário</a></body></html>');}
 function doGet(){return respond_('Página de recebimento de inscrições TAFEXATO. Para receber o guia, utilize o formulário da TAFEXATO.',true);}
 function doPost(e) {
  const p=e&&e.parameter?e.parameter:{};
@@ -29,16 +31,16 @@ function doPost(e) {
  const id=Utilities.getUuid();
  const ss=SpreadsheetApp.openById(CONFIG.SHEET_ID), sheet=ss.getSheetByName(CONFIG.LEADS_TAB);
  if(!sheet) throw new Error('Aba de inscrições indisponível');
- const row=[id,stamp,nome,email,telefone,cidade,concurso,'',etapa,'',modalidade,clean_(p.pagina_origem,300),clean_(p.utm_source,100),clean_(p.utm_medium,100),clean_(p.utm_campaign,100),optin,CONFIG.POLICY_VERSION,'Guia Geral TAFEXATO','PENDENTE','','Novo','','','', 'Google Apps Script',id];
+ const row=[id,stamp,safeCell_(nome),email,telefone,cidade,safeCell_(concurso),'',etapa,'',modalidade,clean_(p.pagina_origem,300),clean_(p.utm_source,100),clean_(p.utm_medium,100),clean_(p.utm_campaign,100),optin,CONFIG.POLICY_VERSION,'Guia Geral TAFEXATO','PENDENTE','','Novo','','','', 'Google Apps Script',id];
  const lock=LockService.getScriptLock();
  try {lock.waitLock(10000);sheet.appendRow(row);} finally {lock.releaseLock();}
  const rowIndex=sheet.getLastRow();
  let sent=false,error='';
  try {
   const subject='Seu Guia TAFEXATO gratuito está aqui';
-  const text='Olá, '+nome+'!\n\nSeu Guia Geral de Preparação para o TAF está disponível: '+CONFIG.EBOOK_URL+'\n\nÉ um material informativo, não substitui o edital nem constitui prescrição individualizada.\n\nQuer conhecer a prescrição individualizada e o Método TAFEXATO? Responda a este e-mail.\n\nO que a TAFEXATO FAZ, faz PENSANDO em VOCÊ!\nAcademia TAFEXATO\n\nPrivacidade: '+CONFIG.SUCCESS_URL.replace('obrigado.html','privacidade.html');
-  const html='<p>Olá, <strong>'+enc_(nome)+'</strong>!</p><p>Seu <strong>Guia Geral TAFEXATO</strong> está disponível.</p><p><a href="'+CONFIG.EBOOK_URL+'" style="background:#615FFF;color:#020617;padding:14px 20px;text-decoration:none;border-radius:9px;font-weight:bold">ABRIR MEU GUIA GRATUITO</a></p><p>Material informativo; confira sempre o edital do seu concurso.</p><p>Quer um treinamento específico? Conheça nossa <strong>prescrição individualizada e o Método TAFEXATO</strong>.</p><p>O que a TAFEXATO FAZ, faz PENSANDO em VOCÊ!</p>';
-  MailApp.sendEmail({to:email,subject,body:text,htmlBody:html,name:'Academia TAFEXATO',replyTo:CONFIG.ADMIN_EMAIL});
+  const text='Olá, '+nome+'!\n\nSeu Guia Geral de Preparação para o TAF está disponível: '+CONFIG.EBOOK_URL+'\n\nÉ um material informativo, não substitui o edital nem constitui prescrição individualizada.\n\nQuer conhecer a prescrição individualizada e o Método TAFEXATO? Responda a este e-mail.\n\nSeu edital é específico. Seu treino também.\nTAFEXATO\n\nPrivacidade: '+CONFIG.SUCCESS_URL.replace('obrigado.html','privacidade.html');
+  const html='<p>Olá, <strong>'+enc_(nome)+'</strong>!</p><p>Seu <strong>Guia Geral TAFEXATO</strong> está disponível.</p><p><a href="'+CONFIG.EBOOK_URL+'" style="background:#4F39F6;color:#FFFFFF;padding:14px 20px;text-decoration:none;border-radius:9px;font-weight:bold">ABRIR MEU GUIA GRATUITO</a></p><p>Material informativo; confira sempre o edital do seu concurso.</p><p>Quer um treinamento específico? Conheça nossa <strong>prescrição individualizada e o Método TAFEXATO</strong>.</p><p>Seu edital é específico. Seu treino também.</p>';
+  MailApp.sendEmail({to:email,subject,body:text,htmlBody:html,name:'TAFEXATO',replyTo:CONFIG.REPLY_TO});
   sent=true;
  }catch(err){error=String(err).slice(0,200); console.error('E-book email failed',id,error);}
  try {
