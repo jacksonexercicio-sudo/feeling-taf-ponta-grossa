@@ -12,7 +12,30 @@ const CONFIG = Object.freeze({
  POLICY_VERSION:'2026-10-30',
  ADMIN_EMAIL:'jacksonexercicio@gmail.com',
  REPLY_TO:'tafexato@gmail.com',
+ SENDER_EMAIL:'tafexato@gmail.com',
 });
+/**
+ * Antes da implantação, configurar tafexato@gmail.com em
+ * Gmail > Configurações > Contas e importação > Enviar e-mail como,
+ * na conta Google que executa este Web App.
+ * Depois executar verificarRemetenteTAFEXATO() no editor do Apps Script.
+ * Nunca publica/usa a conta Feeling como remetente substituto se o alias faltar.
+ */
+function verificarRemetenteTAFEXATO(){
+ const aliases=GmailApp.getAliases().map(a=>a.toLowerCase());
+ const autorizado=aliases.includes(CONFIG.SENDER_EMAIL.toLowerCase());
+ console.log(autorizado?'REMETENTE TAFEXATO AUTORIZADO':'PENDENTE: configurar e verificar '+CONFIG.SENDER_EMAIL+' em Enviar e-mail como');
+ return autorizado;
+}
+function enviarEmailTAFEXATO_(destinatario, assunto, corpo, html){
+ if(!verificarRemetenteTAFEXATO()) throw new Error('Remetente não autorizado: '+CONFIG.SENDER_EMAIL);
+ GmailApp.sendEmail(destinatario,assunto,corpo,{
+  from:CONFIG.SENDER_EMAIL,
+  replyTo:CONFIG.REPLY_TO,
+  name:'TAFEXATO',
+  htmlBody:html
+ });
+}
 function clean_(v, n){return String(v===undefined?'':v).trim().slice(0,n||200);}
 function safeCell_(v){const s=String(v);return /^[=+\-@]/.test(s)?"'"+s:s;}
 function enc_(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -40,7 +63,7 @@ function doPost(e) {
   const subject='Seu Guia TAFEXATO gratuito está aqui';
   const text='Olá, '+nome+'!\n\nSeu Guia Geral de Preparação para o TAF está disponível: '+CONFIG.EBOOK_URL+'\n\nÉ um material informativo, não substitui o edital nem constitui prescrição individualizada.\n\nQuer conhecer a prescrição individualizada e o Método TAFEXATO? Responda a este e-mail.\n\nSeu edital é específico. Seu treino também.\nTAFEXATO\n\nPrivacidade: '+CONFIG.SUCCESS_URL.replace('obrigado.html','privacidade.html');
   const html='<p>Olá, <strong>'+enc_(nome)+'</strong>!</p><p>Seu <strong>Guia Geral TAFEXATO</strong> está disponível.</p><p><a href="'+CONFIG.EBOOK_URL+'" style="background:#4F39F6;color:#FFFFFF;padding:14px 20px;text-decoration:none;border-radius:9px;font-weight:bold">ABRIR MEU GUIA GRATUITO</a></p><p>Material informativo; confira sempre o edital do seu concurso.</p><p>Quer um treinamento específico? Conheça nossa <strong>prescrição individualizada e o Método TAFEXATO</strong>.</p><p>Seu edital é específico. Seu treino também.</p>';
-  MailApp.sendEmail({to:email,subject,body:text,htmlBody:html,name:'TAFEXATO',replyTo:CONFIG.REPLY_TO});
+  enviarEmailTAFEXATO_(email,subject,text,html);
   sent=true;
  }catch(err){error=String(err).slice(0,200); console.error('E-book email failed',id,error);}
  try {
